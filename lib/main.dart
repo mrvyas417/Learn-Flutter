@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learn/Screens/home.dart';
 import 'package:flutter_learn/Screens/login_screen.dart';
+import 'package:flutter_learn/utils/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -27,8 +28,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: "/login",
       routes: {
-        "/": (context) => Home(name),
-        "/login": (context) => Login(),
+        MyRoutes.homeRoute: (context) => Home(name),
+        MyRoutes.loginRoute: (context) => Login(),
       },
     );
   }
