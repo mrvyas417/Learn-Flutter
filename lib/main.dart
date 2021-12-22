@@ -17,16 +17,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     String? name = "shubham ";
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       // home: Home(name),
       themeMode: ThemeMode.light,
       theme: ThemeData(
-        primarySwatch: Colors.teal,
+        primarySwatch: Colors.blueGrey,
         fontFamily: GoogleFonts.lato().fontFamily,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
-      initialRoute: "/login",
+      initialRoute: "/",
       routes: {
         MyRoutes.homeRoute: (context) => Home(name),
         MyRoutes.loginRoute: (context) => Login(),

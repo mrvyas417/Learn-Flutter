@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_learn/Widget/drawer.dart';
 
 // ignore: must_be_immutable
 class Home extends StatelessWidget {
@@ -18,7 +19,7 @@ class Home extends StatelessWidget {
       body: Center(
         child: Text(name),
       ),
-      drawer: Drawer(),
+      drawer: Mydrawer(),
     );
   }
 }
