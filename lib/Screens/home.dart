@@ -13,7 +13,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         // backgroundColor: Colors.blueGrey,
-        title: Text("Ciao!! "),
+        title: Text("E cart"),
         centerTitle: true,
       ),
       body: Center(
