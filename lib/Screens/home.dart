@@ -5,9 +5,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_learn/Widget/drawer.dart';
-import 'package:flutter_learn/Widget/item_widget.dart';
+
+import 'package:flutter_learn/Widget/home_widgets/catalog_header.dart';
+
+import 'package:flutter_learn/Widget/home_widgets/catalog_list.dart';
+
+import 'package:flutter_learn/Widget/thems.dart';
 import 'package:flutter_learn/models/catalog.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 // ignore: must_be_immutable
 class Home extends StatefulWidget {
@@ -40,67 +45,23 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    //final dummylist = List.generate(20, (index) => CatalogModel.items[0]);
     return Scaffold(
-      appBar: AppBar(
-        // backgroundColor: Colors.blueGrey,
-        title: Text("E cart"),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
-            ? GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
-                ),
-                itemBuilder: (context, index) {
-                  final item = CatalogModel.items![index];
-                  return Card(
-                      clipBehavior: Clip.antiAlias,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      child: GridTile(
-                        header: Container(
-                          child: Text(
-                            item.name,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          padding: EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            color: Colors.deepPurple,
-                          ),
-                        ),
-                        child: Image.network(item.image),
-                        footer: Container(
-                          child: Text(
-                            item.price.toString(),
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          padding: EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            color: Colors.black,
-                          ),
-                        ),
-                      ));
-                },
-                itemCount: CatalogModel.items!.length,
-              )
-            //  ListView.builder(
-            //     itemCount: CatalogModel.items!.length,
-            //     itemBuilder: (context, index) {
-            //       return ItemWidget(
-            //         item: CatalogModel.items![index],
-            //       );
-            //     },
-            //   )
-            : Center(
-                child: CircularProgressIndicator(),
-              ),
-      ),
-      drawer: Mydrawer(),
-    );
+        backgroundColor: Mythem.creamColor,
+        body: SafeArea(
+          child: Container(
+            padding: Vx.m32,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CatalogHeader(),
+                if (CatalogModel.items != null &&
+                    CatalogModel.items!.isNotEmpty)
+                  CatalogList().py16().expand()
+                else
+                  CircularProgressIndicator().centered().expand(),
+              ],
+            ),
+          ),
+        ));
   }
 }
