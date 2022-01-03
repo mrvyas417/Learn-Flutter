@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learn/Widget/thems.dart';
 import 'package:flutter_learn/models/cart.dart';
@@ -69,17 +70,24 @@ class __CartListState extends State<_CartList> {
   final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: _cart.x.length,
-      itemBuilder: (context, index) => ListTile(
-        leading: Icon(Icons.done),
-        enabled: true,
-        trailing: IconButton(
-          icon: Icon(Icons.dangerous),
-          onPressed: () {},
-        ),
-        title: _cart.x[index].name.text.make(),
-      ),
-    );
+    return _cart.x.isEmpty
+        ? " Cart is empty".text.xl3.makeCentered()
+        : ListView.builder(
+            itemCount: _cart.x.length,
+            itemBuilder: (context, index) => ListTile(
+              leading: Icon(Icons.done),
+              enabled: true,
+              trailing: IconButton(
+                icon: Icon(CupertinoIcons.minus_circle),
+                onPressed: () {
+                  _cart.remove(_cart.x[index]);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: "Item removed From Cart".text.make()));
+                  setState(() {});
+                },
+              ),
+              title: _cart.x[index].name.text.make(),
+            ),
+          );
   }
 }
