@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/Widget/thems.dart';
 import 'package:flutter_learn/models/catalog.dart';
+
 import 'package:velocity_x/velocity_x.dart';
 
-class HomeDetail extends StatelessWidget {
+class HomeDetailPage extends StatelessWidget {
   final Item catalog;
-  const HomeDetail({Key? key, required this.catalog}) : super(key: key);
 
+  HomeDetailPage({required this.catalog}) : assert(catalog != null);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Mythem.creamColor,
-      ),
-      backgroundColor: Mythem.creamColor,
+      appBar: AppBar(backgroundColor: Colors.transparent),
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -24,13 +22,10 @@ class HomeDetail extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                    Mythem.darkBluishColor,
-                  ),
-                  shape: MaterialStateProperty.all(
-                    StadiumBorder(),
-                  )),
-              child: "Add to Cart".text.make(),
+                  backgroundColor:
+                      MaterialStateProperty.all(context.theme.buttonColor),
+                  shape: MaterialStateProperty.all(StadiumBorder())),
+              child: "Add to cart".text.make(),
             ).wh(120, 50)
           ],
         ).p32(),
@@ -43,29 +38,30 @@ class HomeDetail extends StatelessWidget {
               tag: Key(catalog.id.toString()),
               child: Image.network(catalog.image),
             ).h32(context),
-            VxArc(
-              edge: VxEdge.TOP,
-              arcType: VxArcType.CONVEY,
+            Expanded(
+                child: VxArc(
               height: 30.0,
+              arcType: VxArcType.CONVEY,
+              edge: VxEdge.TOP,
               child: Container(
-                color: Colors.white,
+                color: context.cardColor,
                 width: context.screenWidth,
                 child: Column(
                   children: [
                     catalog.name.text.xl4
-                        .color(Mythem.darkBluishColor)
+                        .color(context.accentColor)
                         .bold
                         .make(),
                     catalog.desc.text.xl.make(),
                     10.heightBox,
-                    "The velvet shaven till nothing tapping forgiveness whose mortals this. The his radiant sat soon devil only the a, before of undaunted fast but floor plainly my angels but, utters plutonian door aptly a lenore door into heard. Sculptured door."
+                    "Dolor sea takimata ipsum sea eirmod aliquyam est. Eos ipsum voluptua eirmod elitr, no dolor dolor amet eirmod dolor labore dolores magna. Amet vero vero vero kasd, dolore sea sed sit invidunt nonumy est sit clita. Diam aliquyam amet tempor diam no aliquyam invidunt. Elitr lorem eirmod dolore clita. Rebum."
                         .text
                         .make()
                         .p16()
                   ],
-                ).py64(),
+                ).py32(),
               ),
-            ).expand()
+            ))
           ],
         ),
       ),

@@ -16,16 +16,16 @@ import 'package:flutter_learn/models/catalog.dart';
 import 'package:flutter_learn/utils/routes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-// ignore: must_be_immutable
-class Home extends StatefulWidget {
-  String name;
-  Home(this.name, {Key? key}) : super(key: key);
-
+class HomePage extends StatefulWidget {
   @override
-  State<Home> createState() => _HomeState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomeState extends State<Home> {
+class _HomePageState extends State<HomePage> {
+  final int days = 30;
+
+  final String name = "Codepur";
+
   @override
   void initState() {
     super.initState();
@@ -33,29 +33,29 @@ class _HomeState extends State<Home> {
   }
 
   loadData() async {
-    await Future.delayed(Duration(seconds: 3));
-    var CagtalogJson = await rootBundle.loadString("assets/files/catalog.json");
-    var decodejson = jsonDecode(CagtalogJson);
-    final productData = decodejson["products"];
-    List<Item> list = CatalogModel.items =
-        List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
+    await Future.delayed(Duration(seconds: 2));
+    final catalogJson =
+        await rootBundle.loadString("assets/files/catalog.json");
+    final decodedData = jsonDecode(catalogJson);
+    var productsData = decodedData["products"];
+    CatalogModel.items = List.from(productsData)
+        .map<Item>((item) => Item.fromMap(item))
+        .toList();
     setState(() {});
-
-    log("this is our  $productData");
-    print("calling");
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: context.canvasColor,
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.pushNamed(context, MyRoutes.cartRoutes);
-          },
-          backgroundColor: Mythem.darkBluishColor,
-          child: Icon(CupertinoIcons.cart),
+          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoutes),
+          backgroundColor: context.theme.buttonColor,
+          child: Icon(
+            CupertinoIcons.cart,
+            color: Colors.white,
+          ),
         ),
-        backgroundColor: Mythem.creamColor,
         body: SafeArea(
           child: Container(
             padding: Vx.m32,

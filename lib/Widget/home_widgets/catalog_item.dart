@@ -25,7 +25,7 @@ class CatalogItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              catalog.name.text.lg.color(Mythem.darkBluishColor).bold.make(),
+              catalog.name.text.lg.color(MyTheme.darkBluishColor).bold.make(),
               catalog.desc.text.make(),
               10.heightBox,
               ButtonBar(
@@ -37,7 +37,7 @@ class CatalogItem extends StatelessWidget {
                     onPressed: () {},
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                          Mythem.darkBluishColor,
+                          MyTheme.darkBluishColor,
                         ),
                         shape: MaterialStateProperty.all(
                           StadiumBorder(),

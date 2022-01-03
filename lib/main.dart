@@ -9,30 +9,23 @@ import 'package:flutter_learn/utils/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    String? name = "shubham ";
     return MaterialApp(
+      themeMode: ThemeMode.system,
+      theme: MyTheme.lightTheme(context),
+      darkTheme: MyTheme.darkTheme(context),
       debugShowCheckedModeBanner: false,
-      // home: Home(name),
-
-      themeMode: ThemeMode.light,
-      theme: Mythem.lightThem(context),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-      ),
-      initialRoute: MyRoutes.homeRoute,
+      initialRoute: MyRoutes.loginRoute,
       routes: {
         "/": (context) => Login(),
-        MyRoutes.homeRoute: (context) => Home(name),
+        MyRoutes.homeRoute: (context) => HomePage(),
         MyRoutes.loginRoute: (context) => Login(),
-        MyRoutes.cartRoutes: (context) => CartPage()
+        MyRoutes.cartRoutes: (context) => CartPage(),
       },
     );
   }

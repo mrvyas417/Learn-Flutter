@@ -2,10 +2,17 @@ import 'dart:convert';
 
 class CatalogModel {
   static List<Item>? items;
+
+  // Get Item by ID
+  static Item getById(int id) =>
+      items!.firstWhere((element) => element.id == id, orElse: null);
+
+  // Get Item by position
+  static Item getByPosition(int pos) => items![pos];
 }
 
 class Item {
-  final num id;
+  final int id;
   final String name;
   final String desc;
   final num price;
@@ -22,20 +29,20 @@ class Item {
   });
 
   Item copyWith({
-    num? id,
-    String? name,
-    String? desc,
-    num? price,
-    String? color,
-    String? image,
+    required int id,
+    required String name,
+    required String desc,
+    required num price,
+    required String color,
+    required String image,
   }) {
     return Item(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      desc: desc ?? this.desc,
-      price: price ?? this.price,
-      color: color ?? this.color,
-      image: image ?? this.image,
+      id: id,
+      name: name,
+      desc: desc,
+      price: price,
+      color: color,
+      image: image,
     );
   }
 
@@ -51,13 +58,15 @@ class Item {
   }
 
   factory Item.fromMap(Map<String, dynamic> map) {
+    //  if (map == null) return null;
+
     return Item(
-      id: map['id'] ?? 0,
-      name: map['name'] ?? '',
-      desc: map['desc'] ?? '',
-      price: map['price'] ?? 0,
-      color: map['color'] ?? '',
-      image: map['image'] ?? '',
+      id: map['id'],
+      name: map['name'],
+      desc: map['desc'],
+      price: map['price'],
+      color: map['color'],
+      image: map['image'],
     );
   }
 
@@ -71,16 +80,16 @@ class Item {
   }
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+  bool operator ==(Object o) {
+    if (identical(this, o)) return true;
 
-    return other is Item &&
-        other.id == id &&
-        other.name == name &&
-        other.desc == desc &&
-        other.price == price &&
-        other.color == color &&
-        other.image == image;
+    return o is Item &&
+        o.id == id &&
+        o.name == name &&
+        o.desc == desc &&
+        o.price == price &&
+        o.color == color &&
+        o.image == image;
   }
 
   @override
