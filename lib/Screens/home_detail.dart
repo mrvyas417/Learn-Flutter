@@ -10,7 +10,9 @@ class HomeDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Mythem.creamColor,
+      ),
       backgroundColor: Mythem.creamColor,
       bottomNavigationBar: Container(
         color: Colors.white,
@@ -28,8 +30,8 @@ class HomeDetail extends StatelessWidget {
                   shape: MaterialStateProperty.all(
                     StadiumBorder(),
                   )),
-              child: "Buy".text.make(),
-            ).wh(100, 50)
+              child: "Add to Cart".text.make(),
+            ).wh(120, 50)
           ],
         ).p32(),
       ),
@@ -56,6 +58,10 @@ class HomeDetail extends StatelessWidget {
                         .make(),
                     catalog.desc.text.xl.make(),
                     10.heightBox,
+                    "The velvet shaven till nothing tapping forgiveness whose mortals this. The his radiant sat soon devil only the a, before of undaunted fast but floor plainly my angels but, utters plutonian door aptly a lenore door into heard. Sculptured door."
+                        .text
+                        .make()
+                        .p16()
                   ],
                 ).py64(),
               ),

@@ -3,6 +3,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -12,6 +13,7 @@ import 'package:flutter_learn/Widget/home_widgets/catalog_list.dart';
 
 import 'package:flutter_learn/Widget/thems.dart';
 import 'package:flutter_learn/models/catalog.dart';
+import 'package:flutter_learn/utils/routes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 // ignore: must_be_immutable
@@ -46,6 +48,13 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushNamed(context, MyRoutes.cartRoutes);
+          },
+          backgroundColor: Mythem.darkBluishColor,
+          child: Icon(CupertinoIcons.cart),
+        ),
         backgroundColor: Mythem.creamColor,
         body: SafeArea(
           child: Container(
