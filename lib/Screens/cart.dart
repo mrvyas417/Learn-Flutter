@@ -1,13 +1,13 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/Widget/thems.dart';
+
 import 'package:flutter_learn/models/cart.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CartPage extends StatelessWidget {
-  CartPage({Key? key}) : super(key: key);
+  const CartPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,12 +61,7 @@ class _CartTotal extends StatelessWidget {
   }
 }
 
-class _CartList extends StatefulWidget {
-  @override
-  __CartListState createState() => __CartListState();
-}
-
-class __CartListState extends State<_CartList> {
+class _CartList extends StatelessWidget {
   final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
@@ -83,7 +78,7 @@ class __CartListState extends State<_CartList> {
                   _cart.remove(_cart.x[index]);
                   ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: "Item removed From Cart".text.make()));
-                  setState(() {});
+                  //setState(() {});
                 },
               ),
               title: _cart.x[index].name.text.make(),

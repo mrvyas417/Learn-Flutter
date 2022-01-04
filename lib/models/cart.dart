@@ -3,9 +3,6 @@
 import 'package:flutter_learn/models/catalog.dart';
 
 class CartModel {
-  static final cartModelP = CartModel._internal();
-  CartModel._internal();
-  factory CartModel() => cartModelP;
   //catalog filed
   late CatalogModel _catalog;
 

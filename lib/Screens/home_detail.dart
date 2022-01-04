@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
+
 import 'package:flutter_learn/Widget/home_widgets/add_to_cart.dart';
 import 'package:flutter_learn/models/catalog.dart';
-
-import 'package:velocity_x/velocity_x.dart';
 
 class HomeDetailPage extends StatelessWidget {
   final Item catalog;
 
-  HomeDetailPage({required this.catalog}) : assert(catalog != null);
+  const HomeDetailPage({
+    Key? key,
+    required this.catalog,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

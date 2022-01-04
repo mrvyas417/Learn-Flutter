@@ -1,7 +1,6 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, unused_local_variable, non_constant_identifier_names, deprecated_member_use
 
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +10,13 @@ import 'package:flutter_learn/Widget/home_widgets/catalog_header.dart';
 
 import 'package:flutter_learn/Widget/home_widgets/catalog_list.dart';
 
-import 'package:flutter_learn/Widget/thems.dart';
 import 'package:flutter_learn/models/catalog.dart';
 import 'package:flutter_learn/utils/routes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }

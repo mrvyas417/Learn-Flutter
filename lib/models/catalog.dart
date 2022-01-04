@@ -1,9 +1,8 @@
+// ignore_for_file: null_closures, avoid_renaming_method_parameters
+
 import 'dart:convert';
 
 class CatalogModel {
-  static final catalogModelP = CatalogModel._internal();
-  CatalogModel._internal();
-  factory CatalogModel() => catalogModelP;
   static List<Item>? items;
 
   // Get Item by ID

@@ -5,14 +5,18 @@ import 'package:flutter_learn/Screens/cart.dart';
 import 'package:flutter_learn/Screens/home.dart';
 import 'package:flutter_learn/Screens/login_screen.dart';
 import 'package:flutter_learn/Widget/thems.dart';
+import 'package:flutter_learn/core/store.dart';
 import 'package:flutter_learn/utils/routes.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import 'package:velocity_x/velocity_x.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(VxState(store: MyStore(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
