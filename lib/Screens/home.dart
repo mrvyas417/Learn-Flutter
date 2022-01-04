@@ -9,6 +9,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_learn/Widget/home_widgets/catalog_header.dart';
 
 import 'package:flutter_learn/Widget/home_widgets/catalog_list.dart';
+import 'package:flutter_learn/core/store.dart';
+import 'package:flutter_learn/models/cart.dart';
 
 import 'package:flutter_learn/models/catalog.dart';
 import 'package:flutter_learn/utils/routes.dart';
@@ -44,15 +46,24 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = (VxState.store as MyStore).cartmodel;
     return Scaffold(
         backgroundColor: context.canvasColor,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoutes),
-          backgroundColor: context.theme.buttonColor,
-          child: Icon(
-            CupertinoIcons.cart,
-            color: Colors.white,
-          ),
+        floatingActionButton: VxBuilder(
+          mutations: const {AddMutation, RemoveMutation},
+          builder: (context, _, status) => FloatingActionButton(
+            onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoutes),
+            backgroundColor: context.theme.buttonColor,
+            child: Icon(
+              CupertinoIcons.cart,
+              color: Colors.white,
+            ),
+          ).badge(
+              color: Vx.gray200,
+              size: 20,
+              count: _cart.x.length,
+              textStyle:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         ),
         body: SafeArea(
           child: Container(
